@@ -1,12 +1,11 @@
 import Container from '../components/container'
 import Header from '../components/header'
 import Layout from '../components/layout'
-import { getAllPosts } from '../lib/api'
 import Head from 'next/head'
 import Link from 'next/link'
 import { CMS_NAME } from '../lib/constants'
 
-export default function Index({allPosts}) {
+export default function Index() {
   // const heroPost = allPosts[0]
   // const morePosts = allPosts.slice(1)
   return (
@@ -52,19 +51,4 @@ export default function Index({allPosts}) {
       </Layout>
     </>
   )
-}
-
-export async function getStaticProps() {
-  const allPosts = await getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'author',
-    'coverImage',
-    'excerpt',
-  ])
-
-  return {
-    props: {allPosts},
-  }
 }
