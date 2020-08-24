@@ -7,6 +7,7 @@ import Head from 'next/head'
 import { CMS_NAME } from '../../lib/constants'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import clsx from 'clsx'
 
 export default function Slug({categories, doc}) {
   // const heroPost = allPosts[0]
@@ -29,17 +30,38 @@ export default function Slug({categories, doc}) {
                 {`${doc?.usage.es2015.code}\n\n${(doc?.content?.examples ?? []).join('\n\n')}`}
               </SyntaxHighlighter>
 
-              <h2 className="mt-4 mb-2 text-2xl">Usage</h2>
-              <h3 className="my-1 text-gray-700 font-semibold text-sm">{doc?.usage.es2015.title}</h3>
+              <h2 className="mt-8 mb-2 text-2xl">Usage</h2>
+              <h3 className="my-1 text-gray-600 font-semibold text-sm">{doc?.usage.es2015.title}</h3>
               <SyntaxHighlighter language="javascript" style={atomDark}>{doc?.usage.es2015.code}</SyntaxHighlighter>
 
-              <h3 className="my-1 text-gray-700 font-semibold text-sm">{doc?.usage.esm.title}</h3>
+              <h3 className="my-1 text-gray-600 font-semibold text-sm">{doc?.usage.esm.title}</h3>
               <SyntaxHighlighter language="javascript" style={atomDark}>{doc?.usage.esm.code}</SyntaxHighlighter>
 
-              <h3 className="my-1 text-gray-700 font-semibold text-sm">{doc?.usage.commonjs.title}</h3>
+              <h3 className="my-1 text-gray-600 font-semibold text-sm">{doc?.usage.commonjs.title}</h3>
               <SyntaxHighlighter language="javascript" style={atomDark}>{doc?.usage.commonjs.code}</SyntaxHighlighter>
 
-              {/*<h2 className="mt-4 mb-2 text-2xl">Params</h2>*/}
+              <h2 className="mt-8 mb-2 text-2xl">Params</h2>
+              <SyntaxHighlighter language="javascript" style={atomDark}>
+                {`${doc?.content?.name}(${doc?.content?.params.map(d=>d.name).join(", ")})`}
+              </SyntaxHighlighter>
+              <table className="table-auto">
+                <thead>
+                <tr className="text-left uppercase text-xs text-gray-600">
+                  <th className="w-3/12 p-2">Name</th>
+                  <th className="w-3/12 p-2">Type</th>
+                  <th className="p-2">description</th>
+                </tr>
+                </thead>
+                <tbody>
+                {doc?.content?.params.map((v, i) => {
+                  return <tr key={i} className={clsx({"bg-gray-100 ": i % 2})}>
+                    <td className="p-2">{v.name}</td>
+                    <td className="p-2">{v.type.names[0]}</td>
+                    <td className="p-2 text-sm">{v.description}</td>
+                  </tr>
+                })}
+                </tbody>
+              </table>
             </div>
 
           </DocumentationLayout>
