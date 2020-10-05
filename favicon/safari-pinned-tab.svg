@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="525px" height="525px" viewBox="0 0 525 525" version="1.1" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Fns.js</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="525" height="525" rx="36"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="logo">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Rectangle" fill="#F0DB4F" xlink:href="#path-1"></use>
+            <path d="M658,135 L658,391 L263,391 C192.307552,391 135,333.692448 135,263 C135,192.307552 192.307552,135 263,135 L263,135 L658,135 Z"
+                  id="Combined-Shape" fill="#323330" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>
