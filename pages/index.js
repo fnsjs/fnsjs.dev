@@ -4,6 +4,8 @@ import Layout from '../components/layout'
 import Head from 'next/head'
 import Link from 'next/link'
 import { CMS_NAME } from '../lib/constants'
+import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
 export default function Index() {
   // const heroPost = allPosts[0]
@@ -27,15 +29,17 @@ export default function Index() {
                 Documentation
               </a>
             </Link>
+
+            <h2 className="mt-16 mb-2 text-2xl"/>
+            <SyntaxHighlighter language="bash" style={atomDark}>
+              npm install fns.js
+            </SyntaxHighlighter>
+            <SyntaxHighlighter language="bash" style={atomDark}>
+              yarn add fns.js
+            </SyntaxHighlighter>
           </article>
 
 
-          <pre className="bg-gray-200 px-4 py-2 rounded-md max-w-sm mx-auto mt-12">
-              npm install fns.js
-            </pre>
-          <pre className="bg-gray-200 px-4 py-2 rounded-md max-w-sm mx-auto mt-8">
-              yarn add fns.js
-            </pre>
           {/*{heroPost && (*/}
           {/*  <HeroPost*/}
           {/*    title={heroPost.title}*/}

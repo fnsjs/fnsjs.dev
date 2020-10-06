@@ -12,7 +12,7 @@ import clsx from 'clsx'
 export default function Slug({categories, doc}) {
   // const heroPost = allPosts[0]
   // const morePosts = allPosts.slice(1)
-  console.log(doc)
+  if(doc?.isFPFn) return null;
   return (
     <>
       <Layout>
@@ -62,6 +62,7 @@ export default function Slug({categories, doc}) {
                 })}
                 </tbody>
               </table>
+
             </div>
 
           </DocumentationLayout>
@@ -75,6 +76,7 @@ export async function getStaticProps({params}) {
 
   const categories = await getAllCategories();
   const doc = await getDocBySlug(params.slug);
+
 
   return {
     props: {
